@@ -9,66 +9,66 @@ const Quiz = ({ onAnswersChange, answers }) => {
   const questions = [
     {
       id: 'visaType',
-      question: 'What type of visa are you interested in?',
+      question: '¿En qué tipo de visa estás interesado?',
       icon: FileText,
-      info: 'Choose the visa category that best fits your immigration goals.',
+      info: 'Elige la categoría de visa que mejor se ajuste a tus objetivos migratorios.',
       options: [
-        { value: 'eb1a', label: 'EB-1A', description: 'Extraordinary Ability', time: { optimistic: 8, intermediate: 14, pessimistic: 24 }, cost: 12500 },
-        { value: 'eb2niw', label: 'EB-2 NIW', description: 'National Interest Waiver', time: { optimistic: 10, intermediate: 18, pessimistic: 30 }, cost: 11000 },
-        { value: 'o1a', label: 'O-1A', description: 'Extraordinary Ability', time: { optimistic: 3, intermediate: 5, pessimistic: 8 }, cost: 8500 },
-        { value: 'o1b', label: 'O-1B', description: 'Arts & Entertainment', time: { optimistic: 3, intermediate: 5, pessimistic: 8 }, cost: 8500 },
-        { value: 'h1b', label: 'H-1B', description: 'Specialty Occupation', time: { optimistic: 6, intermediate: 9, pessimistic: 15 }, cost: 7500 },
-        { value: 'l1', label: 'L-1', description: 'Intracompany Transfer', time: { optimistic: 4, intermediate: 7, pessimistic: 12 }, cost: 9000 },
+        { value: 'eb1a', label: 'EB-1A', description: 'Habilidad Extraordinaria', time: { optimistic: 8, intermediate: 14, pessimistic: 24 }, cost: 12500 },
+        { value: 'eb2niw', label: 'EB-2 NIW', description: 'Exención por Interés Nacional', time: { optimistic: 10, intermediate: 18, pessimistic: 30 }, cost: 11000 },
+        { value: 'o1a', label: 'O-1A', description: 'Habilidad Extraordinaria', time: { optimistic: 3, intermediate: 5, pessimistic: 8 }, cost: 8500 },
+        { value: 'o1b', label: 'O-1B', description: 'Artes y Entretenimiento', time: { optimistic: 3, intermediate: 5, pessimistic: 8 }, cost: 8500 },
+        { value: 'h1b', label: 'H-1B', description: 'Ocupación Especializada', time: { optimistic: 6, intermediate: 9, pessimistic: 15 }, cost: 7500 },
+        { value: 'l1', label: 'L-1', description: 'Transferencia Intraempresarial', time: { optimistic: 4, intermediate: 7, pessimistic: 12 }, cost: 9000 },
       ]
     },
     {
       id: 'country',
-      question: 'What country are you from?',
+      question: '¿De qué país eres?',
       icon: Globe,
-      info: 'Your country of origin affects processing times due to visa bulletin priorities.',
+      info: 'Tu país de origen afecta los tiempos de procesamiento debido a las prioridades del boletín de visas.',
       options: [
         { value: 'india', label: 'India', timeMultiplier: 1.3 },
         { value: 'china', label: 'China', timeMultiplier: 1.25 },
-        { value: 'mexico', label: 'Mexico', timeMultiplier: 1.1 },
-        { value: 'philippines', label: 'Philippines', timeMultiplier: 1.15 },
-        { value: 'other', label: 'Other Country', timeMultiplier: 1 },
+        { value: 'mexico', label: 'México', timeMultiplier: 1.1 },
+        { value: 'philippines', label: 'Filipinas', timeMultiplier: 1.15 },
+        { value: 'other', label: 'Otro País', timeMultiplier: 1 },
       ]
     },
     {
       id: 'currentStatus',
-      question: 'What is your current immigration status?',
+      question: '¿Cuál es tu estatus migratorio actual?',
       icon: FileText,
-      info: 'Your current status may affect the available pathways and timelines.',
+      info: 'Tu estatus actual puede afectar las vías disponibles y los plazos.',
       options: [
-        { value: 'h1b', label: 'H-1B Holder', costAdjustment: 0 },
-        { value: 'f1', label: 'F-1 Student', costAdjustment: 500 },
-        { value: 'l1', label: 'L-1 Holder', costAdjustment: 0 },
-        { value: 'o1', label: 'O-1 Holder', costAdjustment: 0 },
-        { value: 'outside', label: 'Outside the US', costAdjustment: 1500 },
-        { value: 'other', label: 'Other Status', costAdjustment: 750 },
+        { value: 'h1b', label: 'Titular de H-1B', costAdjustment: 0 },
+        { value: 'f1', label: 'Estudiante F-1', costAdjustment: 500 },
+        { value: 'l1', label: 'Titular de L-1', costAdjustment: 0 },
+        { value: 'o1', label: 'Titular de O-1', costAdjustment: 0 },
+        { value: 'outside', label: 'Fuera de EE.UU.', costAdjustment: 1500 },
+        { value: 'other', label: 'Otro Estatus', costAdjustment: 750 },
       ]
     },
     {
       id: 'dependents',
-      question: 'How many dependents will be included?',
+      question: '¿Cuántos dependientes se incluirán?',
       icon: Users,
-      info: 'Dependents include spouse and unmarried children under 21.',
+      info: 'Los dependientes incluyen cónyuge e hijos solteros menores de 21 años.',
       options: [
-        { value: '0', label: 'No dependents', costPerDependent: 0, count: 0 },
-        { value: '1', label: '1 dependent', costPerDependent: 1500, count: 1 },
-        { value: '2', label: '2 dependents', costPerDependent: 1500, count: 2 },
-        { value: '3', label: '3 dependents', costPerDependent: 1500, count: 3 },
-        { value: '4+', label: '4+ dependents', costPerDependent: 1500, count: 4 },
+        { value: '0', label: 'Sin dependientes', costPerDependent: 0, count: 0 },
+        { value: '1', label: '1 dependiente', costPerDependent: 1500, count: 1 },
+        { value: '2', label: '2 dependientes', costPerDependent: 1500, count: 2 },
+        { value: '3', label: '3 dependientes', costPerDependent: 1500, count: 3 },
+        { value: '4+', label: '4+ dependientes', costPerDependent: 1500, count: 4 },
       ]
     },
     {
       id: 'premium',
-      question: 'Do you want premium processing?',
+      question: '¿Quieres procesamiento premium?',
       icon: Zap,
-      info: 'Premium processing guarantees a response within 15 business days for eligible visa categories.',
+      info: 'El procesamiento premium garantiza una respuesta dentro de 15 días hábiles para categorías de visa elegibles.',
       options: [
-        { value: 'yes', label: 'Yes, premium', description: 'Faster (15 days)', cost: 2805, timeReduction: 0.5 },
-        { value: 'no', label: 'No, standard', description: 'Regular time', cost: 0, timeReduction: 1 },
+        { value: 'yes', label: 'Sí, premium', description: 'Más rápido (15 días)', cost: 2805, timeReduction: 0.5 },
+        { value: 'no', label: 'No, estándar', description: 'Tiempo regular', cost: 0, timeReduction: 1 },
       ]
     },
   ]
@@ -92,7 +92,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
       <div className="mb-2 sm:mb-3 md:mb-4">
         <div className="flex justify-between items-center mb-1 sm:mb-1.5">
           <span className="text-[10px] sm:text-xs font-medium text-neutral-500">
-            Question {currentQuestion + 1} of {questions.length}
+            Pregunta {currentQuestion + 1} de {questions.length}
           </span>
           <span className="text-[10px] sm:text-xs font-medium text-[#3d5de2]">
             {Math.round(progress)}%
@@ -132,7 +132,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
                 className="flex items-center gap-1 text-[10px] sm:text-xs text-neutral-500 hover:text-[#3d5de2] transition-colors touch-manipulation"
               >
                 <Info className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                <span>More info</span>
+                <span>Más información</span>
               </button>
             </div>
           </div>
@@ -210,7 +210,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
                 }`}
             >
               <ChevronLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
-              <span>Prev</span>
+              <span>Anterior</span>
             </button>
 
             <div className="flex gap-1 sm:gap-1.5">
@@ -238,7 +238,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
                   : 'text-neutral-600 hover:text-[#3d5de2] hover:bg-neutral-50 active:bg-neutral-100'
                 }`}
             >
-              <span>Next</span>
+              <span>Siguiente</span>
               <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
             </button>
           </div>

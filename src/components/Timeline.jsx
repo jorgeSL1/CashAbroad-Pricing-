@@ -6,9 +6,9 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
   const [expandedPhase, setExpandedPhase] = useState(null)
 
   const scenarios = [
-    { id: 'optimistic', label: 'Optimistic', shortLabel: 'Fast', description: 'Fastest time with no step backs', color: 'emerald', icon: TrendingUp },
-    { id: 'intermediate', label: 'Intermediate', shortLabel: 'Normal', description: 'Moderate time with minor delays', color: 'blue', icon: Clock },
-    { id: 'pessimistic', label: 'Pessimistic', shortLabel: 'Slow', description: 'Longest time due to delays', color: 'amber', icon: AlertCircle },
+    { id: 'optimistic', label: 'Optimista', shortLabel: 'Rápido', description: 'Tiempo más rápido sin contratiempos', color: 'emerald', icon: TrendingUp },
+    { id: 'intermediate', label: 'Intermedio', shortLabel: 'Normal', description: 'Tiempo moderado con retrasos menores', color: 'blue', icon: Clock },
+    { id: 'pessimistic', label: 'Pesimista', shortLabel: 'Lento', description: 'Tiempo más largo debido a retrasos', color: 'amber', icon: AlertCircle },
   ]
 
   const getPhases = useMemo(() => {
@@ -22,18 +22,18 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
     const adjustedTime = Math.round(baseTime * countryMultiplier * premiumReduction)
 
     const phases = [
-      { id: 'preparation', name: 'Case Preparation', description: 'Document gathering and initial assessment',
+      { id: 'preparation', name: 'Preparación del Caso', description: 'Recopilación de documentos y evaluación inicial',
         duration: Math.max(1, Math.round(adjustedTime * 0.2)),
-        details: ['Initial consultation', 'Document collection', 'Evidence compilation', 'Expert letters'], status: 'upcoming' },
-      { id: 'filing', name: 'Filing & Submission', description: 'Petition preparation and USCIS submission',
+        details: ['Consulta inicial', 'Recopilación de documentos', 'Compilación de evidencia', 'Cartas de expertos'], status: 'upcoming' },
+      { id: 'filing', name: 'Presentación y Envío', description: 'Preparación de petición y envío a USCIS',
         duration: Math.max(1, Math.round(adjustedTime * 0.15)),
-        details: ['Petition drafting', 'Form preparation', 'Supporting docs', 'USCIS submission'], status: 'upcoming' },
-      { id: 'processing', name: 'USCIS Processing', description: 'USCIS review and adjudication',
+        details: ['Redacción de petición', 'Preparación de formularios', 'Documentos de apoyo', 'Envío a USCIS'], status: 'upcoming' },
+      { id: 'processing', name: 'Procesamiento de USCIS', description: 'Revisión y adjudicación de USCIS',
         duration: Math.max(2, Math.round(adjustedTime * 0.45)),
-        details: ['Receipt notice', 'Biometrics', 'Background checks', 'Case adjudication'], status: 'upcoming' },
-      { id: 'decision', name: 'Decision & Next Steps', description: 'Final decision and post-approval steps',
+        details: ['Aviso de recibo', 'Biometría', 'Verificaciones de antecedentes', 'Adjudicación del caso'], status: 'upcoming' },
+      { id: 'decision', name: 'Decisión y Próximos Pasos', description: 'Decisión final y pasos posteriores a la aprobación',
         duration: Math.max(1, Math.round(adjustedTime * 0.2)),
-        details: ['Approval notice', 'Consular processing', 'Status activation', 'EAD/AP'], status: 'upcoming' },
+        details: ['Aviso de aprobación', 'Procesamiento consular', 'Activación de estatus', 'EAD/AP'], status: 'upcoming' },
     ]
 
     return phases
@@ -58,8 +58,8 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
         <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-neutral-100 flex items-center justify-center">
           <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-neutral-400" />
         </div>
-        <h3 className="text-base sm:text-lg font-semibold text-neutral-800 mb-1 sm:mb-2">Select a Visa Type</h3>
-        <p className="text-sm text-neutral-500">Answer the questions to see your personalized timeline</p>
+        <h3 className="text-base sm:text-lg font-semibold text-neutral-800 mb-1 sm:mb-2">Selecciona un Tipo de Visa</h3>
+        <p className="text-sm text-neutral-500">Responde las preguntas para ver tu línea de tiempo personalizada</p>
       </div>
     )
   }
@@ -70,7 +70,7 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
       <div className="card p-3 sm:p-4">
         <div className="flex items-center gap-2 mb-2 sm:mb-3 md:mb-4">
           <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#3d5de2]" />
-          <span className="font-medium text-xs sm:text-sm md:text-base text-primary-900">Select Scenario</span>
+          <span className="font-medium text-xs sm:text-sm md:text-base text-primary-900">Selecciona Escenario</span>
         </div>
         <div className="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-3">
           {scenarios.map((s) => {
@@ -103,9 +103,9 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
         <div className="flex gap-2 sm:gap-3">
           <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-medium text-xs sm:text-sm md:text-base text-amber-800 mb-0.5 sm:mb-1">RFE Possibility</h4>
+            <h4 className="font-medium text-xs sm:text-sm md:text-base text-amber-800 mb-0.5 sm:mb-1">Posibilidad de RFE</h4>
             <p className="text-[10px] sm:text-xs md:text-sm text-amber-700">
-              USCIS may request additional information before deciding on your petition.
+              USCIS puede solicitar información adicional antes de decidir sobre tu petición.
             </p>
           </div>
         </div>
@@ -116,10 +116,10 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
         className={`card p-3 sm:p-4 md:p-6 border-l-4 ${currentColors.border}`}>
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mb-0.5 sm:mb-1">Estimated Total Time</p>
+            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mb-0.5 sm:mb-1">Tiempo Total Estimado</p>
             <div className="flex items-baseline gap-1 sm:gap-2">
               <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-900">{totalTime}</span>
-              <span className="text-sm sm:text-base md:text-lg text-neutral-600">months</span>
+              <span className="text-sm sm:text-base md:text-lg text-neutral-600">meses</span>
             </div>
           </div>
           <div className={`px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full ${currentColors.bg} ${currentColors.text} font-medium text-xs sm:text-sm md:text-base`}>
@@ -131,7 +131,7 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
       {/* Timeline Visualization */}
       <div className="card p-3 sm:p-4 md:p-6">
         <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 mb-3 sm:mb-4 md:mb-6 flex items-center gap-1.5 sm:gap-2">
-          <Clock className="w-4 h-4 sm:w-5 sm:h-5" />Process Timeline
+          <Clock className="w-4 h-4 sm:w-5 sm:h-5" />Línea de Tiempo del Proceso
         </h4>
         
         {/* Progress Bar */}
@@ -148,8 +148,8 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
             })}
           </div>
           <div className="flex justify-between mt-1.5 sm:mt-2">
-            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-500">Start</span>
-            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-500">{totalTime} months</span>
+            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-500">Inicio</span>
+            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-500">{totalTime} meses</span>
           </div>
         </div>
 
@@ -178,8 +178,8 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
                   </div>
                   <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
                     <div className="text-right">
-                      <p className="font-semibold text-xs sm:text-sm md:text-base text-primary-900">{phase.duration} mo</p>
-                      <p className="text-[10px] sm:text-xs text-neutral-500 hidden xs:block">Month {cumulativeTime}</p>
+                      <p className="font-semibold text-xs sm:text-sm md:text-base text-primary-900">{phase.duration} {phase.duration === 1 ? 'mes' : 'meses'}</p>
+                      <p className="text-[10px] sm:text-xs text-neutral-500 hidden xs:block">Mes {cumulativeTime}</p>
                     </div>
                     <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
                   </div>

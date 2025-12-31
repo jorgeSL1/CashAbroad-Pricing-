@@ -9,27 +9,27 @@ const Header = () => {
 
   const navItems = [
     {
-      label: 'Services',
+      label: 'Servicios',
       items: [
-        { label: 'Visa Match', href: '#' },
-        { label: 'Timeline Calculator', href: '#' },
-        { label: 'Compare Visas', href: '#' },
+        { label: 'Compatibilidad de Visa', href: '#' },
+        { label: 'Calculadora de Tiempo', href: '#' },
+        { label: 'Comparar Visas', href: '#' },
       ]
     },
     {
-      label: 'Resources',
+      label: 'Recursos',
       items: [
-        { label: 'Visa Guides', href: '#' },
-        { label: 'FAQs', href: '#' },
+        { label: 'Guías de Visa', href: '#' },
+        { label: 'Preguntas Frecuentes', href: '#' },
         { label: 'Blog', href: '#' },
       ]
     },
     {
-      label: 'Company',
+      label: 'Empresa',
       items: [
-        { label: 'About Us', href: '#' },
-        { label: 'Testimonials', href: '#' },
-        { label: 'Press', href: '#' },
+        { label: 'Sobre Nosotros', href: '#' },
+        { label: 'Testimonios', href: '#' },
+        { label: 'Prensa', href: '#' },
       ]
     },
   ]
@@ -119,7 +119,7 @@ const Header = () => {
               href="#" 
               className="btn-primary inline-flex items-center gap-2 text-sm md:text-base"
             >
-              Schedule a free call
+              Agendar una llamada gratuita
             </a>
           </motion.div>
 
@@ -127,7 +127,7 @@ const Header = () => {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors touch-manipulation"
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
             {isMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
           </button>
@@ -191,7 +191,7 @@ const Header = () => {
                   className="btn-primary w-full text-center block text-sm sm:text-base"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Schedule a free call
+                  Agendar una llamada gratuita
                 </a>
               </div>
             </div>

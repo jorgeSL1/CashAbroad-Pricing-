@@ -41,25 +41,25 @@ const YouTubeIcon = ({ className }) => (
 const Footer = () => {
   const footerLinks = {
     company: [
-      { label: 'About Us', href: '#' },
-      { label: 'Testimonials', href: '#' },
-      { label: 'Press', href: '#' },
+      { label: 'Sobre Nosotros', href: '#' },
+      { label: 'Testimonios', href: '#' },
+      { label: 'Prensa', href: '#' },
       { label: 'Blog', href: '#' },
     ],
     services: [
-      { label: 'Visa Match', href: '#' },
-      { label: 'Timeline Calculator', href: '#' },
-      { label: 'Compare Visas', href: '#' },
-      { label: 'Pricing', href: '#' },
+      { label: 'Compatibilidad de Visa', href: '#' },
+      { label: 'Calculadora de Tiempo', href: '#' },
+      { label: 'Comparar Visas', href: '#' },
+      { label: 'Precios', href: '#' },
     ],
     resources: [
-      { label: 'Visa Guides', href: '#' },
-      { label: 'FAQs', href: '#' },
-      { label: 'Visa Courses', href: '#' },
+      { label: 'Guías de Visa', href: '#' },
+      { label: 'Preguntas Frecuentes', href: '#' },
+      { label: 'Cursos de Visa', href: '#' },
     ],
     legal: [
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms & Conditions', href: '#' },
+      { label: 'Política de Privacidad', href: '#' },
+      { label: 'Términos y Condiciones', href: '#' },
     ],
   }
 
@@ -124,9 +124,9 @@ const Footer = () => {
                 <span className="text-xl sm:text-2xl font-semibold">CashAbroad</span>
               </div>
               <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed max-w-sm">
-                US immigration, but simple. We combine expert legal guidance with
-                cutting-edge technology to make your immigration journey seamless
-                and transparent.
+                Inmigración a EE.UU., pero simple. Combinamos asesoría legal experta con
+                tecnología de vanguardia para hacer tu proceso de inmigración fluido
+                y transparente.
               </p>
             </motion.div>
 
@@ -166,7 +166,7 @@ const Footer = () => {
               transition={{ delay: 0.2 }}
               className="mt-5 sm:mt-6"
             >
-              <p className="text-xs sm:text-sm font-medium text-white mb-3">Follow us</p>
+              <p className="text-xs sm:text-sm font-medium text-white mb-3">Síguenos</p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {socialLinks.map((social) => {
                   const Icon = social.icon
@@ -197,7 +197,7 @@ const Footer = () => {
             transition={{ delay: 0.2 }}
             className="col-span-1"
           >
-            <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Company</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Empresa</h4>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -220,7 +220,7 @@ const Footer = () => {
             transition={{ delay: 0.3 }}
             className="col-span-1"
           >
-            <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Services</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Servicios</h4>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
@@ -243,7 +243,7 @@ const Footer = () => {
             transition={{ delay: 0.4 }}
             className="col-span-2 sm:col-span-1"
           >
-            <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Resources</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Recursos</h4>
             <ul className="space-y-2 sm:space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
@@ -281,10 +281,10 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
             <p className="text-xs sm:text-sm text-neutral-400 text-center sm:text-left">
-              © {currentYear} CashAbroad. All rights reserved.
+              © {currentYear} CashAbroad. Todos los derechos reservados.
             </p>
             <p className="text-xs sm:text-sm text-neutral-400">
-              Made with  in Mexico
+              Hecho con  en México
             </p>
           </div>
         </div>

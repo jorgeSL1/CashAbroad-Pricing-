@@ -43,24 +43,24 @@ const PricingChart = ({ answers }) => {
     const total = baseCost + statusAdjustment + dependentCost + premiumCost
 
     const breakdown = [
-      { name: 'Legal Fees', value: legalFees, description: 'Attorney and paralegal services', icon: FileText, color: '#2d3a8c' },
-      { name: 'USCIS Fees', value: totalUscis, description: 'Government filing fees', icon: Building2, color: '#3d5de2' },
+      { name: 'Honorarios Legales', value: legalFees, description: 'Servicios de abogado y asistente legal', icon: FileText, color: '#2d3a8c' },
+      { name: 'Tarifas de USCIS', value: totalUscis, description: 'Tarifas gubernamentales de presentación', icon: Building2, color: '#3d5de2' },
     ]
 
     if (dependentCost > 0) {
-      breakdown.push({ name: 'Dependent Fees', value: dependentCost, description: `Additional fees for ${dependentCount} dependent(s)`, icon: Users, color: '#14b8a6' })
+      breakdown.push({ name: 'Tarifas de Dependientes', value: dependentCost, description: `Tarifas adicionales para ${dependentCount} dependiente(s)`, icon: Users, color: '#14b8a6' })
     }
     if (statusAdjustment > 0) {
-      breakdown.push({ name: 'Status Adjustment', value: statusAdjustment, description: 'Additional processing based on current status', icon: FileText, color: '#8b5cf6' })
+      breakdown.push({ name: 'Ajuste de Estatus', value: statusAdjustment, description: 'Procesamiento adicional basado en el estatus actual', icon: FileText, color: '#8b5cf6' })
     }
     if (premiumCost > 0) {
-      breakdown.push({ name: 'Premium Processing', value: premiumCost, description: '15 business day processing', icon: Zap, color: '#f59e0b' })
+      breakdown.push({ name: 'Procesamiento Premium', value: premiumCost, description: 'Procesamiento de 15 días hábiles', icon: Zap, color: '#f59e0b' })
     }
 
     const scenarioData = [
-      { name: 'Your Estimate', amount: total },
-      { name: 'Industry Avg', amount: Math.round(total * 1.2) },
-      { name: 'High-End', amount: Math.round(total * 1.5) },
+      { name: 'Tu Estimación', amount: total },
+      { name: 'Promedio Industria', amount: Math.round(total * 1.2) },
+      { name: 'Alta Gama', amount: Math.round(total * 1.5) },
     ]
 
     return { total, breakdown, scenarioData, legalFees, uscis: totalUscis }
@@ -84,8 +84,8 @@ const PricingChart = ({ answers }) => {
         <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-neutral-100 flex items-center justify-center">
           <DollarSign className="w-6 h-6 sm:w-8 sm:h-8 text-neutral-400" />
         </div>
-        <h3 className="text-base sm:text-lg font-semibold text-neutral-800 mb-1 sm:mb-2">Select a Visa Type</h3>
-        <p className="text-sm text-neutral-500">Answer the questions to see your personalized pricing</p>
+        <h3 className="text-base sm:text-lg font-semibold text-neutral-800 mb-1 sm:mb-2">Selecciona un Tipo de Visa</h3>
+        <p className="text-sm text-neutral-500">Responde las preguntas para ver tu precio personalizado</p>
       </div>
     )
   }
@@ -97,12 +97,12 @@ const PricingChart = ({ answers }) => {
         className="card p-3 sm:p-4 md:p-6 border-l-4 border-[#3d5de2]">
         <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 md:gap-4">
           <div>
-            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mb-0.5 sm:mb-1">Total Estimated Cost</p>
+            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mb-0.5 sm:mb-1">Costo Total Estimado</p>
             <div className="flex items-baseline gap-1 sm:gap-1.5 md:gap-2">
               <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-900">${calculateCosts.total.toLocaleString()}</span>
               <span className="text-[10px] sm:text-xs md:text-sm text-neutral-500">USD</span>
             </div>
-            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mt-0.5 sm:mt-1">Payment in installments • Includes all fees</p>
+            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mt-0.5 sm:mt-1">Pago en cuotas • Incluye todas las tarifas</p>
           </div>
           <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-[#eef2ff] rounded-full">
             <DollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#3d5de2]" />
@@ -115,7 +115,7 @@ const PricingChart = ({ answers }) => {
       <div className="card p-3 sm:p-4 md:p-6">
         <button onClick={() => setShowDetails(!showDetails)} className="w-full flex items-center justify-between mb-2 sm:mb-3 md:mb-4 touch-manipulation">
           <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 flex items-center gap-1.5 sm:gap-2">
-            <DollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />Cost Breakdown
+            <DollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />Desglose de Costos
           </h4>
           <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 transition-transform duration-300 ${showDetails ? 'rotate-180' : ''}`} />
         </button>
@@ -183,7 +183,7 @@ const PricingChart = ({ answers }) => {
       {/* Comparison Chart */}
       <div className="card p-3 sm:p-4 md:p-6">
         <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 mb-3 sm:mb-4 md:mb-6 flex items-center gap-1.5 sm:gap-2">
-          <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />Market Comparison
+          <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />Comparación de Mercado
         </h4>
 
         <div className="h-48 sm:h-56 md:h-64">
@@ -207,15 +207,15 @@ const PricingChart = ({ answers }) => {
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-6 mt-2 sm:mt-3 md:mt-4">
           <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2">
             <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-[#2d3a8c]" />
-            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Your Estimate</span>
+            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Tu Estimación</span>
           </div>
           <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2">
             <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-[#3d5de2]" />
-            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Industry Avg</span>
+            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Promedio Industria</span>
           </div>
           <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2">
             <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-neutral-400" />
-            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">High-End</span>
+            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Alta Gama</span>
           </div>
         </div>
       </div>
@@ -226,10 +226,10 @@ const PricingChart = ({ answers }) => {
         <div className="flex gap-2 sm:gap-3">
           <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-neutral-500 flex-shrink-0 mt-0.5" />
           <div>
-            <h5 className="font-medium text-xs sm:text-sm md:text-base text-neutral-800 mb-0.5 sm:mb-1">Disclaimer</h5>
+            <h5 className="font-medium text-xs sm:text-sm md:text-base text-neutral-800 mb-0.5 sm:mb-1">Descargo de Responsabilidad</h5>
             <p className="text-[10px] sm:text-xs md:text-sm text-neutral-600">
-              These are estimated costs based on typical cases. Actual fees may vary depending on case complexity and specific circumstances.
-              Government fees are subject to change. Contact us for a personalized quote.
+              Estos son costos estimados basados en casos típicos. Las tarifas reales pueden variar dependiendo de la complejidad del caso y circunstancias específicas.
+              Las tarifas gubernamentales están sujetas a cambios. Contáctanos para una cotización personalizada.
             </p>
           </div>
         </div>

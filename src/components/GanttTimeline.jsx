@@ -9,20 +9,20 @@ import { Clock, Calendar, TrendingUp, AlertCircle, ChevronRight, Info } from 'lu
 
 const scenarioConfigs = {
   optimistic: {
-    id: 'optimistic', label: 'Optimistic', shortLabel: 'Fast',
-    description: 'Fastest time with no step backs',
+    id: 'optimistic', label: 'Optimista', shortLabel: 'Rápido',
+    description: 'Tiempo más rápido sin contratiempos',
     color: '#10b981', bgColor: '#ecfdf5', borderColor: '#10b981',
     barGradient: ['#10b981', '#059669'], icon: TrendingUp,
   },
   intermediate: {
-    id: 'intermediate', label: 'Intermediate', shortLabel: 'Normal',
-    description: 'Moderate time with minor delays',
+    id: 'intermediate', label: 'Intermedio', shortLabel: 'Normal',
+    description: 'Tiempo moderado con retrasos menores',
     color: '#3d5de2', bgColor: '#eef2ff', borderColor: '#3d5de2',
     barGradient: ['#3d5de2', '#2d3a8c'], icon: Clock,
   },
   pessimistic: {
-    id: 'pessimistic', label: 'Pessimistic', shortLabel: 'Slow',
-    description: 'Longest time due to delays',
+    id: 'pessimistic', label: 'Pesimista', shortLabel: 'Lento',
+    description: 'Tiempo más largo debido a retrasos',
     color: '#f59e0b', bgColor: '#fffbeb', borderColor: '#f59e0b',
     barGradient: ['#fbbf24', '#d97706'], icon: AlertCircle,
   },
@@ -90,17 +90,17 @@ const CustomTooltip = ({ data, x, y, config, isMobile }) => {
         <p style={{ fontSize: isMobile ? '10px' : '12px', color: '#6b7280', marginBottom: '8px' }}>{data.description}</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase' }}>Start</span>
+            <span style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase' }}>Inicio</span>
             <span style={{ fontSize: isMobile ? '10px' : '12px', fontWeight: 600, color: '#1f2937' }}>{formatDate(data.startDate)}</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase' }}>End</span>
+            <span style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase' }}>Fin</span>
             <span style={{ fontSize: isMobile ? '10px' : '12px', fontWeight: 600, color: '#1f2937' }}>{formatDate(data.endDate)}</span>
           </div>
         </div>
         <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: '11px', color: '#6b7280' }}>Duration</span>
-          <span style={{ fontWeight: 700, fontSize: '11px', padding: '4px 8px', borderRadius: '9999px', backgroundColor: config.bgColor, color: config.color }}>{data.duration} mo</span>
+          <span style={{ fontSize: '11px', color: '#6b7280' }}>Duración</span>
+          <span style={{ fontWeight: 700, fontSize: '11px', padding: '4px 8px', borderRadius: '9999px', backgroundColor: config.bgColor, color: config.color }}>{data.duration} {data.duration === 1 ? 'mes' : 'meses'}</span>
         </div>
       </div>
       <div style={{ position: 'absolute', bottom: '-8px', left: '50%', transform: 'translateX(-50%)', width: 0, height: 0, borderLeft: '8px solid transparent', borderRight: '8px solid transparent', borderTop: '8px solid white' }} />
@@ -188,7 +188,7 @@ const GanttChartInner = ({ width, height, data, scenario }) => {
               return (
                 <g>
                   <line x1={todayX} x2={todayX} y1={-10} y2={innerHeight} stroke="#ef4444" strokeWidth={2} strokeDasharray="4,4" />
-                  <text x={todayX} y={-15} textAnchor="middle" fill="#ef4444" fontSize={isMobile ? 8 : 10} fontWeight={600}>Today</text>
+                  <text x={todayX} y={-15} textAnchor="middle" fill="#ef4444" fontSize={isMobile ? 8 : 10} fontWeight={600}>Hoy</text>
                 </g>
               )
             }
@@ -251,10 +251,10 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
     startDate.setDate(1)
 
     const phases = [
-      { id: 'preparation', name: 'Case Preparation', description: 'Document gathering and initial assessment', proportion: 0.2 },
-      { id: 'filing', name: 'Filing & Submission', description: 'Petition preparation and USCIS submission', proportion: 0.15 },
-      { id: 'processing', name: 'USCIS Processing', description: 'USCIS review and adjudication', proportion: 0.45 },
-      { id: 'decision', name: 'Decision & Next Steps', description: 'Final decision and post-approval steps', proportion: 0.2 },
+      { id: 'preparation', name: 'Preparación del Caso', description: 'Recopilación de documentos y evaluación inicial', proportion: 0.2 },
+      { id: 'filing', name: 'Presentación y Envío', description: 'Preparación de petición y envío a USCIS', proportion: 0.15 },
+      { id: 'processing', name: 'Procesamiento de USCIS', description: 'Revisión y adjudicación de USCIS', proportion: 0.45 },
+      { id: 'decision', name: 'Decisión y Próximos Pasos', description: 'Decisión final y pasos posteriores a la aprobación', proportion: 0.2 },
     ]
 
     let currentDate = new Date(startDate)
@@ -275,8 +275,8 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-neutral-100 flex items-center justify-center">
           <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-neutral-400" />
         </div>
-        <h3 className="text-base sm:text-lg font-semibold text-neutral-800 mb-1 sm:mb-2">Select a Visa Type</h3>
-        <p className="text-sm text-neutral-500">Answer the questions to see your personalized timeline</p>
+        <h3 className="text-base sm:text-lg font-semibold text-neutral-800 mb-1 sm:mb-2">Selecciona un Tipo de Visa</h3>
+        <p className="text-sm text-neutral-500">Responde las preguntas para ver tu línea de tiempo personalizada</p>
       </div>
     )
   }
@@ -289,7 +289,7 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
       <div className="card p-3 sm:p-4">
         <div className="flex items-center gap-2 mb-2 sm:mb-3 md:mb-4">
           <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#3d5de2]" />
-          <span className="font-medium text-xs sm:text-sm md:text-base text-primary-900">Select Scenario</span>
+          <span className="font-medium text-xs sm:text-sm md:text-base text-primary-900">Selecciona Escenario</span>
         </div>
         <div className="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-3">
           {Object.values(scenarioConfigs).map((config) => {
@@ -320,8 +320,8 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         <div className="flex gap-2 sm:gap-3">
           <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-medium text-xs sm:text-sm md:text-base text-amber-800 mb-0.5 sm:mb-1">RFE Possibility</h4>
-            <p className="text-[10px] sm:text-xs md:text-sm text-amber-700">USCIS may request additional information before deciding on your petition.</p>
+            <h4 className="font-medium text-xs sm:text-sm md:text-base text-amber-800 mb-0.5 sm:mb-1">Posibilidad de RFE</h4>
+            <p className="text-[10px] sm:text-xs md:text-sm text-amber-700">USCIS puede solicitar información adicional antes de decidir sobre tu petición.</p>
           </div>
         </div>
       </motion.div>
@@ -331,10 +331,10 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         className="card p-3 sm:p-4 md:p-6 border-l-4" style={{ borderLeftColor: currentConfig.color }}>
         <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3">
           <div>
-            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mb-0.5 sm:mb-1">Estimated Total Time</p>
+            <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mb-0.5 sm:mb-1">Tiempo Total Estimado</p>
             <div className="flex items-baseline gap-1 sm:gap-2">
               <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-900">{totalTime}</span>
-              <span className="text-sm sm:text-base md:text-lg text-neutral-600">months</span>
+              <span className="text-sm sm:text-base md:text-lg text-neutral-600">meses</span>
             </div>
           </div>
           <div className="px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full font-medium text-xs sm:text-sm md:text-base"
@@ -347,8 +347,8 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         className="card p-2 sm:p-3 md:p-4 lg:p-6 relative overflow-hidden">
         <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 mb-2 sm:mb-3 md:mb-4 flex items-center gap-1.5 sm:gap-2">
           <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
-          <span className="hidden xs:inline">Process Timeline - Gantt View</span>
-          <span className="xs:hidden">Timeline</span>
+          <span className="hidden xs:inline">Línea de Tiempo del Proceso - Vista Gantt</span>
+          <span className="xs:hidden">Línea de Tiempo</span>
         </h4>
         <div className="w-full" style={{ height: isMobile ? '220px' : windowWidth < 768 ? '260px' : '320px' }}>
           <ParentSize>{({ width, height }) => <GanttChartInner width={width} height={height} data={timelineData} scenario={scenario} />}</ParentSize>
@@ -356,11 +356,11 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2 sm:mt-3 md:mt-4 pt-2 sm:pt-3 md:pt-4 border-t border-neutral-100">
           <div className="flex items-center gap-1.5 sm:gap-2">
             <div className="w-3 h-3 sm:w-4 sm:h-4 rounded" style={{ background: `linear-gradient(90deg, ${currentConfig.barGradient[0]}, ${currentConfig.barGradient[1]})` }} />
-            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Process Phase</span>
+            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Fase del Proceso</span>
           </div>
           <div className="flex items-center gap-1.5 sm:gap-2">
             <div className="w-3 sm:w-4 h-0.5 bg-red-500" style={{ borderStyle: 'dashed' }} />
-            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Today</span>
+            <span className="text-[10px] sm:text-xs md:text-sm text-neutral-600">Hoy</span>
           </div>
         </div>
       </motion.div>
@@ -368,7 +368,7 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
       {/* Phase Details */}
       <div className="card p-3 sm:p-4 md:p-6">
         <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 mb-2 sm:mb-3 md:mb-4 flex items-center gap-1.5 sm:gap-2">
-          <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />Phase Details
+          <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />Detalles de las Fases
         </h4>
         <div className="space-y-2 sm:space-y-3">
           {timelineData.map((phase, index) => (
@@ -382,7 +382,7 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
                 <div className="flex items-center justify-between flex-wrap gap-1 sm:gap-2">
                   <h5 className="font-medium text-xs sm:text-sm md:text-base text-primary-900">{phase.name}</h5>
                   <span className="text-[10px] sm:text-xs md:text-sm font-semibold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full"
-                    style={{ backgroundColor: currentConfig.bgColor, color: currentConfig.color }}>{phase.duration} mo</span>
+                    style={{ backgroundColor: currentConfig.bgColor, color: currentConfig.color }}>{phase.duration} {phase.duration === 1 ? 'mes' : 'meses'}</span>
                 </div>
                 <p className="text-[10px] sm:text-xs md:text-sm text-neutral-500 mt-0.5 sm:mt-1">{phase.description}</p>
                 <div className="flex items-center gap-1 sm:gap-2 mt-1 sm:mt-2 text-[9px] sm:text-xs text-neutral-400">
