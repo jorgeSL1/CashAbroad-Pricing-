@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [mobileActiveSection, setMobileActiveSection] = useState(null)
 
   const navItems = [
     {
@@ -33,28 +34,32 @@ const Header = () => {
     },
   ]
 
+  const toggleMobileSection = (label) => {
+    setMobileActiveSection(mobileActiveSection === label ? null : label)
+  }
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-neutral-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+    <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-neutral-100 safe-top">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-18 lg:h-20">
           {/* Logo */}
           <motion.a 
             href="#"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 touch-manipulation"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-800 to-accent-blue flex items-center justify-center shadow-soft">
-                <span className="text-white font-bold text-lg">CA</span>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-[#3d5de2] to-[#2d3a8c] flex items-center justify-center shadow-soft">
+                <span className="text-white font-bold text-sm sm:text-base md:text-lg">CA</span>
               </div>
-              <span className="text-xl font-semibold text-primary-900 hidden sm:block">CashAbroad</span>
+              <span className="text-base sm:text-lg md:text-xl font-semibold text-primary-900">CashAbroad</span>
             </div>
           </motion.a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item, index) => (
               <div 
                 key={item.label}
@@ -66,7 +71,7 @@ const Header = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="flex items-center gap-1 px-4 py-2 text-neutral-600 hover:text-primary-800 
+                  className="flex items-center gap-1 px-3 md:px-4 py-2 text-sm md:text-base text-neutral-600 hover:text-[#3d5de2] 
                            transition-colors duration-200 rounded-lg hover:bg-neutral-50"
                 >
                   {item.label}
@@ -89,7 +94,7 @@ const Header = () => {
                         <a
                           key={subItem.label}
                           href={subItem.href}
-                          className="block px-4 py-3 text-neutral-600 hover:text-primary-800 
+                          className="block px-4 py-3 text-sm md:text-base text-neutral-600 hover:text-[#3d5de2] 
                                    hover:bg-neutral-50 transition-colors duration-200"
                           style={{ animationDelay: `${subIndex * 50}ms` }}
                         >
@@ -103,16 +108,16 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Button - Desktop */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="hidden md:block"
+            className="hidden lg:block"
           >
             <a 
               href="#" 
-              className="btn-primary inline-flex items-center gap-2"
+              className="btn-primary inline-flex items-center gap-2 text-sm md:text-base"
             >
               Schedule a free call
             </a>
@@ -121,9 +126,10 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors touch-manipulation"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
           </button>
         </div>
       </div>
@@ -136,29 +142,55 @@ const Header = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-neutral-100"
+            className="lg:hidden bg-white border-t border-neutral-100 overflow-hidden"
           >
-            <div className="px-4 py-4 space-y-2">
+            <div className="px-3 sm:px-4 py-3 sm:py-4 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
               {navItems.map((item) => (
-                <div key={item.label} className="space-y-1">
-                  <div className="px-3 py-2 text-sm font-medium text-neutral-400 uppercase tracking-wide">
+                <div key={item.label} className="border-b border-neutral-100 last:border-0">
+                  <button
+                    onClick={() => toggleMobileSection(item.label)}
+                    className="w-full flex items-center justify-between px-3 py-3 text-sm sm:text-base font-medium text-neutral-700 hover:bg-neutral-50 rounded-lg transition-colors touch-manipulation"
+                  >
                     {item.label}
-                  </div>
-                  {item.items.map((subItem) => (
-                    <a
-                      key={subItem.label}
-                      href={subItem.href}
-                      className="block px-3 py-2 text-neutral-600 hover:text-primary-800 
-                               hover:bg-neutral-50 rounded-lg transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {subItem.label}
-                    </a>
-                  ))}
+                    <ChevronRight className={`w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 transition-transform duration-200
+                      ${mobileActiveSection === item.label ? 'rotate-90' : ''}`} 
+                    />
+                  </button>
+                  
+                  <AnimatePresence>
+                    {mobileActiveSection === item.label && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pl-4 pb-2 space-y-1">
+                          {item.items.map((subItem) => (
+                            <a
+                              key={subItem.label}
+                              href={subItem.href}
+                              className="block px-3 py-2.5 text-sm text-neutral-600 hover:text-[#3d5de2] 
+                                       hover:bg-neutral-50 rounded-lg transition-colors touch-manipulation"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              {subItem.label}
+                            </a>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
-              <div className="pt-4 border-t border-neutral-100">
-                <a href="#" className="btn-primary w-full text-center block">
+              
+              <div className="pt-3 sm:pt-4">
+                <a 
+                  href="#" 
+                  className="btn-primary w-full text-center block text-sm sm:text-base"
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   Schedule a free call
                 </a>
               </div>

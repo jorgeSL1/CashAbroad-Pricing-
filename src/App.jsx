@@ -45,11 +45,11 @@ function App() {
   }, [answers, scenario])
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 md:pt-32 pb-6 sm:pb-8 md:pb-12 bg-white">
+      <section className="pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-4 sm:pb-6 md:pb-8 lg:pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -57,10 +57,10 @@ function App() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-primary-900 tracking-tight mb-3 sm:mb-4">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-primary-900 tracking-tight mb-2 sm:mb-3 md:mb-4">
               <span className="gradient-text">PRICING AND TIMELINE</span>
             </h1>
-            <p className="text-base sm:text-lg text-neutral-600 font-normal">
+            <p className="text-sm sm:text-base md:text-lg text-neutral-600 font-normal px-2">
               Estimate the time and cost of your visa process
             </p>
           </motion.div>
@@ -70,9 +70,9 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex justify-center mt-6 sm:mt-8"
+            className="flex justify-center mt-4 sm:mt-6 md:mt-8"
           >
-            <div className="inline-flex p-1 sm:p-1.5 bg-neutral-100 rounded-xl w-full sm:w-auto max-w-md">
+            <div className="inline-flex p-1 sm:p-1.5 bg-neutral-100 rounded-xl w-full sm:w-auto max-w-xs sm:max-w-md">
               {tabs.map((tab) => {
                 const Icon = tab.icon
                 const isActive = activeTab === tab.id
@@ -80,9 +80,9 @@ function App() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative flex-1 sm:flex-initial px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium text-sm sm:text-base transition-all duration-300
+                    className={`relative flex-1 sm:flex-initial px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-medium text-xs sm:text-sm md:text-base transition-all duration-300 touch-manipulation
                       ${isActive
-                        ? 'text-primary-800'
+                        ? 'text-[#3d5de2]'
                         : 'text-neutral-500 hover:text-neutral-700'
                       }`}
                   >
@@ -95,7 +95,7 @@ function App() {
                     )}
                     <span className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2">
                       <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                      <span className="hidden xs:inline">{tab.label}</span>
+                      <span>{tab.label}</span>
                     </span>
                   </button>
                 )
@@ -108,7 +108,7 @@ function App() {
             key={activeTab}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center text-sm sm:text-base text-neutral-500 mt-2 sm:mt-3"
+            className="text-center text-xs sm:text-sm md:text-base text-neutral-500 mt-2 sm:mt-3"
           >
             {tabs.find(t => t.id === activeTab)?.description}
           </motion.p>
@@ -116,37 +116,39 @@ function App() {
       </section>
 
       {/* Main Content */}
-      <section className="py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
-            {/* Left Column - Quiz (más pequeño) */}
+      <section className="py-4 sm:py-6 md:py-8 lg:py-12">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+            {/* Left Column - Quiz */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="lg:col-span-4"
+              className="lg:col-span-4 order-1"
             >
-              <Quiz answers={answers} onAnswersChange={setAnswers} />
+              <div className="lg:sticky lg:top-24">
+                <Quiz answers={answers} onAnswersChange={setAnswers} />
+              </div>
             </motion.div>
 
-            {/* Right Column - Results (más grande, centrado) */}
+            {/* Right Column - Results */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="lg:col-span-8 lg:sticky lg:top-24 lg:self-start"
+              className="lg:col-span-8 order-2"
             >
-              {/* Summary Cards - Mobile */}
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 lg:hidden">
+              {/* Summary Cards - Mobile & Tablet */}
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6 lg:hidden">
                 <div className="card p-3 sm:p-4">
-                  <p className="text-xs sm:text-sm text-neutral-500 mb-1">Total Cost</p>
-                  <p className="text-xl sm:text-2xl font-bold text-primary-900">
+                  <p className="text-xs sm:text-sm text-neutral-500 mb-0.5 sm:mb-1">Total Cost</p>
+                  <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary-900">
                     ${summary.totalCost.toLocaleString()}
                   </p>
                 </div>
                 <div className="card p-3 sm:p-4">
-                  <p className="text-xs sm:text-sm text-neutral-500 mb-1">Total Time</p>
-                  <p className="text-xl sm:text-2xl font-bold text-primary-900">
+                  <p className="text-xs sm:text-sm text-neutral-500 mb-0.5 sm:mb-1">Total Time</p>
+                  <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary-900">
                     {summary.totalTime}
                   </p>
                 </div>
@@ -202,9 +204,9 @@ function App() {
                   <button
                     key={s}
                     onClick={() => setScenario(s)}
-                    className={`px-2 lg:px-3 py-1 lg:py-1.5 rounded-full text-xs lg:text-sm font-medium transition-all
+                    className={`px-2 lg:px-3 py-1 lg:py-1.5 rounded-full text-xs lg:text-sm font-medium transition-all touch-manipulation
                       ${scenario === s
-                        ? 'bg-primary-800 text-white'
+                        ? 'bg-[#3d5de2] text-white'
                         : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
                       }`}
                   >
@@ -246,17 +248,42 @@ function App() {
         </div>
       </motion.div>
 
-      {/* Mobile CTA */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 p-3 sm:p-4 bg-white border-t border-neutral-200 shadow-elevated z-40">
-        <button className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base py-2.5 sm:py-3">
-          <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-          Talk about my results
-          <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-        </button>
+      {/* Mobile & Tablet CTA */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 p-3 sm:p-4 bg-white border-t border-neutral-200 shadow-elevated z-40 fixed-bottom-safe">
+        <div className="max-w-lg mx-auto">
+          {/* Mobile Summary Row */}
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div>
+                <p className="text-[10px] sm:text-xs text-neutral-500">Cost</p>
+                <p className="text-sm sm:text-base font-bold text-primary-900">
+                  ${summary.totalCost.toLocaleString()}
+                </p>
+              </div>
+              <div className="h-8 w-px bg-neutral-200" />
+              <div>
+                <p className="text-[10px] sm:text-xs text-neutral-500">Time</p>
+                <p className="text-sm sm:text-base font-bold text-primary-900">
+                  {summary.totalTime}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 px-2 py-1 bg-amber-50 rounded-full text-amber-700 text-[10px] sm:text-xs">
+              <span>RFE</span>
+              <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" />
+            </div>
+          </div>
+          
+          <button className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base py-2.5 sm:py-3">
+            <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span>Talk about my results</span>
+            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+          </button>
+        </div>
       </div>
 
       {/* Spacer for fixed bottom bar */}
-      <div className="h-24 lg:h-28" />
+      <div className="h-28 sm:h-32 lg:h-28" />
 
       <Footer />
     </div>
