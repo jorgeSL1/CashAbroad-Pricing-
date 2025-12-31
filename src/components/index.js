@@ -1,0 +1,6 @@
+export { default as Header } from './Header'
+export { default as Quiz } from './Quiz'
+export { default as Timeline } from './Timeline'
+export { default as GanttTimeline } from './GanttTimeline'
+export { default as PricingChart } from './PricingChart'
+export { default as Footer } from './Footer'
