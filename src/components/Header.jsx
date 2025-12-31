@@ -191,7 +191,7 @@ const Header = () => {
                   className="btn-primary w-full text-center block text-sm sm:text-base"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Agendar una llamada gratuita
+                  Agendar una llamada gratuit
                 </a>
               </div>
             </div>
