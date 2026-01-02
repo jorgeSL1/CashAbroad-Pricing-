@@ -285,7 +285,7 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
 
   return (
     <div className="space-y-3 sm:space-y-4 md:space-y-6">
-      {/* Scenario Selector */}
+    
       <div className="card p-3 sm:p-4">
         <div className="flex items-center gap-2 mb-2 sm:mb-3 md:mb-4">
           <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#3d5de2]" />
@@ -315,7 +315,7 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         </div>
       </div>
 
-      {/* RFE Warning */}
+    
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-3 sm:p-4 bg-amber-50 border border-amber-200 rounded-lg sm:rounded-xl">
         <div className="flex gap-2 sm:gap-3">
           <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 flex-shrink-0 mt-0.5" />
@@ -326,7 +326,7 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         </div>
       </motion.div>
 
-      {/* Total Time */}
+     
       <motion.div key={scenario} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
         className="card p-3 sm:p-4 md:p-6 border-l-4" style={{ borderLeftColor: currentConfig.color }}>
         <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3">
@@ -342,7 +342,7 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         </div>
       </motion.div>
 
-      {/* Gantt Chart */}
+     
       <motion.div key={`gantt-${scenario}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
         className="card p-2 sm:p-3 md:p-4 lg:p-6 relative overflow-hidden">
         <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 mb-2 sm:mb-3 md:mb-4 flex items-center gap-1.5 sm:gap-2">
@@ -365,7 +365,7 @@ const GanttTimeline = ({ answers, scenario, onScenarioChange }) => {
         </div>
       </motion.div>
 
-      {/* Phase Details */}
+    
       <div className="card p-3 sm:p-4 md:p-6">
         <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 mb-2 sm:mb-3 md:mb-4 flex items-center gap-1.5 sm:gap-2">
           <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />Detalles de las Fases

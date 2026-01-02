@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'
+import logo from '../assets/cashabroad-black.png'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -42,7 +43,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-neutral-100 safe-top">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-18 lg:h-20">
-          {/* Logo */}
+       
           <motion.a 
             href="#"
             className="flex items-center gap-2 touch-manipulation"
@@ -50,15 +51,14 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-[#3d5de2] to-[#2d3a8c] flex items-center justify-center shadow-soft">
-                <span className="text-white font-bold text-sm sm:text-base md:text-lg">CA</span>
-              </div>
-              <span className="text-base sm:text-lg md:text-xl font-semibold text-primary-900">CashAbroad</span>
-            </div>
+            <img
+              src={logo}
+              alt="CashAbroad"
+              className="h-16"
+            />
           </motion.a>
 
-          {/* Desktop Navigation */}
+          
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item, index) => (
               <div 
@@ -108,7 +108,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button - Desktop */}
+      
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -123,7 +123,7 @@ const Header = () => {
             </a>
           </motion.div>
 
-          {/* Mobile Menu Button */}
+         
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors touch-manipulation"
@@ -134,7 +134,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div

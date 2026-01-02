@@ -66,7 +66,7 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
 
   return (
     <div className="space-y-3 sm:space-y-4 md:space-y-6">
-      {/* Scenario Selector */}
+     
       <div className="card p-3 sm:p-4">
         <div className="flex items-center gap-2 mb-2 sm:mb-3 md:mb-4">
           <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#3d5de2]" />
@@ -97,7 +97,7 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
         </div>
       </div>
 
-      {/* RFE Warning */}
+     
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
         className="p-3 sm:p-4 bg-amber-50 border border-amber-200 rounded-lg sm:rounded-xl">
         <div className="flex gap-2 sm:gap-3">
@@ -111,7 +111,7 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
         </div>
       </motion.div>
 
-      {/* Total Time Summary */}
+     
       <motion.div key={scenario} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
         className={`card p-3 sm:p-4 md:p-6 border-l-4 ${currentColors.border}`}>
         <div className="flex items-center justify-between">
@@ -128,13 +128,13 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
         </div>
       </motion.div>
 
-      {/* Timeline Visualization */}
+      
       <div className="card p-3 sm:p-4 md:p-6">
         <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 mb-3 sm:mb-4 md:mb-6 flex items-center gap-1.5 sm:gap-2">
           <Clock className="w-4 h-4 sm:w-5 sm:h-5" />Línea de Tiempo del Proceso
         </h4>
         
-        {/* Progress Bar */}
+      
         <div className="mb-4 sm:mb-6 md:mb-8">
           <div className="h-2 sm:h-3 bg-neutral-100 rounded-full overflow-hidden flex">
             {getPhases.map((phase, index) => {
@@ -153,7 +153,7 @@ const Timeline = ({ answers, scenario, onScenarioChange }) => {
           </div>
         </div>
 
-        {/* Phases */}
+        
         <div className="space-y-2 sm:space-y-3">
           {getPhases.map((phase, index) => {
             const isExpanded = expandedPhase === phase.id

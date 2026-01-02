@@ -92,7 +92,7 @@ const PricingChart = ({ answers }) => {
 
   return (
     <div className="space-y-3 sm:space-y-4 md:space-y-6">
-      {/* Total Cost Card */}
+    
       <motion.div key={calculateCosts.total} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
         className="card p-3 sm:p-4 md:p-6 border-l-4 border-[#3d5de2]">
         <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 md:gap-4">
@@ -111,7 +111,6 @@ const PricingChart = ({ answers }) => {
         </div>
       </motion.div>
 
-      {/* Cost Breakdown */}
       <div className="card p-3 sm:p-4 md:p-6">
         <button onClick={() => setShowDetails(!showDetails)} className="w-full flex items-center justify-between mb-2 sm:mb-3 md:mb-4 touch-manipulation">
           <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 flex items-center gap-1.5 sm:gap-2">
@@ -159,7 +158,7 @@ const PricingChart = ({ answers }) => {
           )}
         </AnimatePresence>
 
-        {/* Pie Chart */}
+       
         <div className="h-48 sm:h-56 md:h-64 mt-2 sm:mt-3 md:mt-4">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -180,7 +179,7 @@ const PricingChart = ({ answers }) => {
         </div>
       </div>
 
-      {/* Comparison Chart */}
+      
       <div className="card p-3 sm:p-4 md:p-6">
         <h4 className="font-semibold text-xs sm:text-sm md:text-base text-primary-900 mb-3 sm:mb-4 md:mb-6 flex items-center gap-1.5 sm:gap-2">
           <Info className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />Comparación de Mercado
@@ -220,7 +219,7 @@ const PricingChart = ({ answers }) => {
         </div>
       </div>
 
-      {/* Disclaimer */}
+     
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
         className="p-2.5 sm:p-3 md:p-4 bg-neutral-50 rounded-lg sm:rounded-xl border border-neutral-200">
         <div className="flex gap-2 sm:gap-3">

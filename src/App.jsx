@@ -23,7 +23,7 @@ function App() {
     },
   ]
 
-  // Calculate summary values
+ 
   const summary = useMemo(() => {
     if (!answers.visaType) {
       return { totalCost: 0, totalTime: '-' }
@@ -48,7 +48,7 @@ function App() {
     <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       <Header />
       
-      {/* Hero Section */}
+    
       <section className="pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-4 sm:pb-6 md:pb-8 lg:pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -65,7 +65,7 @@ function App() {
             </p>
           </motion.div>
 
-          {/* Tab Selector */}
+        
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ function App() {
             </div>
           </motion.div>
 
-          {/* Tab Description */}
+          
           <motion.p
             key={activeTab}
             initial={{ opacity: 0 }}
@@ -115,11 +115,11 @@ function App() {
         </div>
       </section>
 
-      {/* Main Content */}
+ 
       <section className="py-4 sm:py-6 md:py-8 lg:py-12">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-            {/* Left Column - Quiz */}
+            
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -131,14 +131,14 @@ function App() {
               </div>
             </motion.div>
 
-            {/* Right Column - Results */}
+           
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:col-span-8 order-2"
             >
-              {/* Summary Cards - Mobile & Tablet */}
+        
               <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6 lg:hidden">
                 <div className="card p-3 sm:p-4">
                   <p className="text-xs sm:text-sm text-neutral-500 mb-0.5 sm:mb-1">Costo Total</p>
@@ -154,7 +154,7 @@ function App() {
                 </div>
               </div>
 
-              {/* Tab Content */}
+           
               <AnimatePresence mode="wait">
                 {activeTab === 'timeline' ? (
                   <motion.div
@@ -187,7 +187,6 @@ function App() {
         </div>
       </section>
 
-      {/* Desktop Summary Bar */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -196,7 +195,7 @@ function App() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-4">
           <div className="flex items-center justify-between flex-wrap gap-3">
-            {/* Scenario Selection */}
+      
             <div className="flex items-center gap-2 lg:gap-4 flex-wrap">
               <span className="text-xs lg:text-sm font-medium text-neutral-600">Escenario:</span>
               <div className="flex gap-1.5 lg:gap-2">
@@ -223,7 +222,7 @@ function App() {
               </div>
             </div>
 
-            {/* Summary Values */}
+        
             <div className="flex items-center gap-4 lg:gap-8">
               <div>
                 <p className="text-xs lg:text-sm text-neutral-500">Costo total</p>
@@ -251,10 +250,10 @@ function App() {
         </div>
       </motion.div>
 
-      {/* Mobile & Tablet CTA */}
+     
       <div className="lg:hidden fixed bottom-0 left-0 right-0 p-3 sm:p-4 bg-white border-t border-neutral-200 shadow-elevated z-40 fixed-bottom-safe">
         <div className="max-w-lg mx-auto">
-          {/* Mobile Summary Row */}
+          
           <div className="flex items-center justify-between mb-2 sm:mb-3">
             <div className="flex items-center gap-3 sm:gap-4">
               <div>
@@ -285,7 +284,7 @@ function App() {
         </div>
       </div>
 
-      {/* Spacer for fixed bottom bar */}
+      
       <div className="h-28 sm:h-32 lg:h-28" />
 
       <Footer />

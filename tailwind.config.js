@@ -24,7 +24,7 @@ export default {
           500: '#6366f1',
           600: '#4f46e5',
           700: '#4338ca',
-          800: '#3d5de2',  // Color principal actualizado
+          800: '#3d5de2',  
           900: '#2d3a8c',
           950: '#1e2563',
         },

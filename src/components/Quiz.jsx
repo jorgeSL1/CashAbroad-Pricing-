@@ -88,7 +88,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
 
   return (
     <div className="w-full">
-      {/* Progress Bar */}
+     
       <div className="mb-2 sm:mb-3 md:mb-4">
         <div className="flex justify-between items-center mb-1 sm:mb-1.5">
           <span className="text-[10px] sm:text-xs font-medium text-neutral-500">
@@ -108,7 +108,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
         </div>
       </div>
 
-      {/* Question Card */}
+      
       <AnimatePresence mode="wait">
         <motion.div
           key={currentQuestion}
@@ -118,7 +118,6 @@ const Quiz = ({ onAnswersChange, answers }) => {
           transition={{ duration: 0.3 }}
           className="card p-2.5 sm:p-3 md:p-4"
         >
-          {/* Question Header */}
           <div className="flex items-start gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
             <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-md sm:rounded-lg bg-[#eef2ff] flex items-center justify-center flex-shrink-0">
               <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3d5de2]" />
@@ -137,7 +136,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
             </div>
           </div>
 
-          {/* Info Panel */}
+        
           <AnimatePresence>
             {showInfo === currentQ.id && (
               <motion.div
@@ -154,7 +153,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
             )}
           </AnimatePresence>
 
-          {/* Options */}
+         
           <div className="grid gap-1.5 sm:gap-2">
             {currentQ.options.map((option, index) => {
               const isSelected = answers[currentQ.id]?.value === option.value
@@ -198,7 +197,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
             })}
           </div>
 
-          {/* Navigation */}
+        
           <div className="flex justify-between items-center mt-2 sm:mt-3 md:mt-4 pt-2 sm:pt-3 md:pt-4 border-t border-neutral-100">
             <button
               onClick={() => setCurrentQuestion(Math.max(0, currentQuestion - 1))}
@@ -245,7 +244,7 @@ const Quiz = ({ onAnswersChange, answers }) => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Quick Navigation Pills */}
+  
       <div className="mt-2 sm:mt-3 md:mt-4 flex flex-wrap gap-1 sm:gap-1.5 justify-center">
         {questions.map((q, index) => {
           const QIcon = q.icon
